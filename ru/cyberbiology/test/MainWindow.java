@@ -1,6 +1,5 @@
 package ru.cyberbiology.test;
 
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -28,8 +27,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ToolTipManager;
-// Тест
-// Основной класс программы.
 import javax.swing.WindowConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -50,7 +47,6 @@ public class MainWindow extends JFrame implements IWindow
 	public static final int BOTH	= 4;
 	
     public static World world;
-   // JPanel paintPanel = new JPanel(new FlowLayout());
 
     public JLabel generationLabel = new JLabel(" Generation: 0 ");
     public JLabel populationLabel = new JLabel(" Population: 0 ");
@@ -73,8 +69,6 @@ public class MainWindow extends JFrame implements IWindow
 		};
     JMenuItem recordItem;
     JMenuItem snapShotItem;
-    //JMenuItem saveItem;
-    //JMenuItem deleteItem;
     public JPanel paintPanel = new JPanel()
     {
     	public void paint(Graphics g)
@@ -94,7 +88,6 @@ public class MainWindow extends JFrame implements IWindow
         Dimension sSize = Toolkit.getDefaultToolkit().getScreenSize(), fSize = getSize();
         if (fSize.height > sSize.height) { fSize.height = sSize.height; }
         if (fSize.width  > sSize.width)  { fSize.width = sSize.width; }
-        //setLocation((sSize.width - fSize.width)/2, (sSize.height - fSize.height)/2);
         setSize(new Dimension(sSize.width, sSize.height));
         
         
@@ -104,8 +97,6 @@ public class MainWindow extends JFrame implements IWindow
 
         container.setLayout(new BorderLayout());// у этого лейаута приятная особенность - центральная часть растягивается автоматически
         container.add(paintPanel, BorderLayout.CENTER);// добавляем нашу карту в центр
-        //container.add(paintPanel);
-        
         
         JPanel statusPanel = new JPanel(new FlowLayout());
         statusPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -221,72 +212,18 @@ public class MainWindow extends JFrame implements IWindow
             		world.stopRecording();
             		if(world.haveRecord())
             		{
-            			//saveItem.setEnabled(true);
-            			//deleteItem.setEnabled(true);
-            			//recordItem.setEnabled(false);
             		}
             	}
             }
         });
-        /*
-        saveItem = new JMenuItem("Сохранить запись");
-        fileMenu.add(saveItem);
-        saveItem.setEnabled(false);
-        saveItem.addActionListener(new ActionListener()
-        {           
-            public void actionPerformed(ActionEvent e)
-            {
-            	/ *FileNameExtensionFilter filter = new FileNameExtensionFilter("*.cb.zip","*.*");
-                JFileChooser fc = new JFileChooser();
-                fc.setFileFilter(filter);
-                if (fc.showSaveDialog(window) == JFileChooser.APPROVE_OPTION)
-                {
-                	world.saveRecord(fc.getSelectedFile());
-                	saveItem.setEnabled(false);
-                	deleteItem.setEnabled(false);
-                	recordItem.setEnabled(true);
-                } * /
-            	world.saveRecord(new File("/Users/Kolya/Documents/workspace/CyberBiologyTest/save/test.cb.zip"));
-            	saveItem.setEnabled(false);
-            	deleteItem.setEnabled(false);
-            	recordItem.setEnabled(true);
-            }           
-        });
-        */
-        /*
-        deleteItem = new JMenuItem("Удалить запись");
-        fileMenu.add(deleteItem);
-        deleteItem.setEnabled(false);
-        deleteItem.addActionListener(new ActionListener()
-        {           
-            public void actionPerformed(ActionEvent e)
-            {
-            	world.deleteRecord();
-            	
-            	saveItem.setEnabled(false);
-            	deleteItem.setEnabled(false);
-            	recordItem.setEnabled(true);
-            }           
-        });*/
-        /**/
+
         JMenuItem openItem = new JMenuItem("Открыть плеер");
         fileMenu.add(openItem);
         openItem.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-            	/*
-            	FileNameExtensionFilter filter = new FileNameExtensionFilter("*.cb.zip","*.*");
-                JFileChooser fc = new JFileChooser();
-                fc.setFileFilter(filter);
-                if (fc.showSaveDialog(window) == JFileChooser.APPROVE_OPTION)
-                {
-                	File f	= fc.getSelectedFile();
-                	PlayerWindow fw	= new PlayerWindow();
-                	fw.openFile(f);
-                }/*/
             	PlayerWindow fw	= new PlayerWindow();
-            	//fw.openFile(new File(world.getProperties().getFileDirectory()+"test.cb.zip"));
             }           
         });
 
@@ -313,7 +250,7 @@ public class MainWindow extends JFrame implements IWindow
         {           
             public void actionPerformed(ActionEvent e)
             {
-            	// Попытка корректно заверишть запись, если она велась
+            	// Попытка корректно заверишить запись, если она велась
             	// TODO: Не тестировалось!
             	if(world!=null && world.isRecording())
             	{
@@ -396,8 +333,6 @@ public class MainWindow extends JFrame implements IWindow
         			Graphics g	= buffer.getGraphics();
 	        		g.setColor(Color.MAGENTA);
 	        		g.fillRect(botX * BOTW, botY * BOTH, BOTW, BOTH);
-//                    g.setColor(Color.BLACK);
-  //                  g.drawRect(botX * 4, botY * 4, 4, 4);
 	                paintPanel.repaint();
 	        	}
         		StringBuilder buf	= new StringBuilder();
@@ -424,10 +359,7 @@ public class MainWindow extends JFrame implements IWindow
         		buf.append("<p>direction="+bot.direction);
         		buf.append("<p>health="+bot.health);
         		buf.append("<p>mineral="+bot.mineral);
-        		
-        		
-        	    //buf.append("");
-       	    
+
         	    IBotGeneController cont;
                 for (int i = 0; i < Bot.MIND_SIZE; i++)
                 {//15
@@ -447,7 +379,6 @@ public class MainWindow extends JFrame implements IWindow
         	    
         	    buf.append("</html>");
 	        	JComponent component = (JComponent)e.getSource();
-	        	//System.out.println(bot);
 	        	paintPanel.setToolTipText(buf.toString());
 	            MouseEvent phantom = new MouseEvent(
 	                    component,
@@ -493,76 +424,7 @@ public class MainWindow extends JFrame implements IWindow
         
 
         paintPanel.repaint();
-    	/*
-    	int w = canvas.getWidth();
-    	int h = canvas.getHeight();
-    	//Создаем временный буфер для рисования
-    	Image buf = canvas.createImage(w, h);
-    	//подеменяем графику на временный буфер
-    	Graphics g = buf.getGraphics();
-    	
-        g.drawRect(0, 0, width * 4 + 1, height * 4 + 1);
-
-        population = 0;
-        organic = 0;
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                if (matrix[x][y] == null) {
-                    g.setColor(Color.WHITE);
-                    g.fillRect(x * 4,y * 4, 4, 4);
-                } else if ((matrix[x][y].alive == 1) || (matrix[x][y].alive == 2)) {
-                    g.setColor(new Color(200, 200, 200));
-                    g.fillRect(x * 4, y * 4, 4, 4);
-                    organic = organic + 1;
-                } else if (matrix[x][y].alive == 3) {
-                    g.setColor(Color.BLACK);
-                    g.drawRect(x * 4, y * 4, 4, 4);
-
-//                    g.setColor(new Color(matrix[x][y].c_red, matrix[x][y].c_green, matrix[x][y].c_blue));
-                    int green = (int) (matrix[x][y].c_green - ((matrix[x][y].c_green * matrix[x][y].health) / 2000));
-                    if (green < 0) green = 0;
-                    if (green > 255) green = 255;
-                    int blue = (int) (matrix[x][y].c_blue * 0.8 - ((matrix[x][y].c_blue * matrix[x][y].mineral) / 2000));
-                    g.setColor(new Color(matrix[x][y].c_red, green, blue));
-//                    g.setColor(new Color(matrix[x][y].c_red, matrix[x][y].c_green, matrix[x][y].c_blue));
-                    g.fillRect(x * 4 + 1, y * 4 + 1, 3, 3);
-                    population = population + 1;
-                }
-            }
-        }
-        
-        generationLabel.setText(" Generation: " + String.valueOf(generation));
-        populationLabel.setText(" Population: " + String.valueOf(population));
-        organicLabel.setText(" Organic: " + String.valueOf(organic));
-        
-        buffer = buf;
-        canvas.repaint();
-        */
     }
-
-
-
-
-/*    public void print() {
-        //Выводим в консоль текущее состояние симуляции
-        String out;
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                if (matrix[x][y] == null) {
-                    out = " . ";
-                } else if (!matrix[x][y].alive) {
-                    out = " x ";
-                } else {
-                    out = "[" + matrix[x][y].health + "]";
-                }
-                System.out.print(out);
-            }
-            System.out.println();
-        }
-        System.out.println();
-        System.out.println();
-    }
-*/
 
     public static void main(String[] args) {
     	MainWindow.window	= new MainWindow();

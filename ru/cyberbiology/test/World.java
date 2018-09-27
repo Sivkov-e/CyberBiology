@@ -224,11 +224,6 @@ public class World implements IWorld
 	{
 		return this.recorder.haveRecord();
 	}
-	/*
-	public void deleteRecord()
-	{
-		this.recorder.deleteRecord();
-	}*/
 
 	public void makeSnapShot()
 	{

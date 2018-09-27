@@ -48,13 +48,11 @@ public class ViewBasic implements IView
                     g.setColor(Color.BLACK);
                     g.drawRect(x * World.BOTW, y * World.BOTH, World.BOTW, World.BOTH);
 
-//                    g.setColor(new Color(matrix[x][y].c_red, matrix[x][y].c_green, matrix[x][y].c_blue));
                     int green = (int) (world.matrix[x][y].c_green - ((world.matrix[x][y].c_green * world.matrix[x][y].health) / 2000));
                     if (green < 0) green = 0;
                     if (green > 255) green = 255;
                     int blue = (int) (world.matrix[x][y].c_blue * 0.8 - ((world.matrix[x][y].c_blue * world.matrix[x][y].mineral) / 2000));
                     g.setColor(new Color(world.matrix[x][y].c_red, green, blue));
-//                    g.setColor(new Color(matrix[x][y].c_red, matrix[x][y].c_green, matrix[x][y].c_blue));
                     g.fillRect(x * World.BOTW + 1, y * World.BOTH + 1,World.BOTW-1, World.BOTH-1);
                     world.population = world.population + 1;
                 }

@@ -1,30 +1,6 @@
 package ru.cyberbiology.test;
 
-
-import ru.cyberbiology.test.gene.GeneCareAbsolutelyDirection;
-import ru.cyberbiology.test.gene.GeneCareRelativeDirection;
-import ru.cyberbiology.test.gene.GeneChangeDirectionAbsolutely;
-import ru.cyberbiology.test.gene.GeneChangeDirectionRelative;
-import ru.cyberbiology.test.gene.GeneEatAbsoluteDirection;
-import ru.cyberbiology.test.gene.GeneEatRelativeDirection;
-import ru.cyberbiology.test.gene.GeneFlattenedHorizontally;
-import ru.cyberbiology.test.gene.GeneFullAroud;
-import ru.cyberbiology.test.gene.GeneGiveAbsolutelyDirection;
-import ru.cyberbiology.test.gene.GeneGiveRelativeDirection;
-import ru.cyberbiology.test.gene.GeneIsHealthGrow;
-import ru.cyberbiology.test.gene.GeneIsMineralGrow;
-import ru.cyberbiology.test.gene.GeneIsMultiCell;
-import ru.cyberbiology.test.gene.GeneLookRelativeDirection;
-import ru.cyberbiology.test.gene.GeneMineralToEnergy;
-import ru.cyberbiology.test.gene.GeneMutate;
-import ru.cyberbiology.test.gene.GeneMyHealth;
-import ru.cyberbiology.test.gene.GeneMyLevel;
-import ru.cyberbiology.test.gene.GeneMyMineral;
-import ru.cyberbiology.test.gene.GenePhotosynthesis;
-import ru.cyberbiology.test.gene.GeneStepInAbsolutelyDirection;
-import ru.cyberbiology.test.gene.GeneStepInRelativeDirection;
-import ru.cyberbiology.test.gene.GeneСreateBot;
-import ru.cyberbiology.test.gene.GeneСreateCell;
+import ru.cyberbiology.test.gene.*;
 import ru.cyberbiology.test.prototype.IBot;
 import ru.cyberbiology.test.prototype.IWorld;
 import ru.cyberbiology.test.prototype.gene.IBotGeneController;
@@ -124,8 +100,6 @@ public class Bot implements IBot
         direction = 2;
         health = 5;
         alive = LV_ALIVE;
-        //Class[] parameterTypes = new Class[] { Bot.class}; 
-        //BotCommandController.class.getMethod(name, parameterTypes);
     }
 
 
@@ -136,11 +110,6 @@ public class Bot implements IBot
     // ====================================================================
     public void step()
     {
-    	/*
-    	if(alive == LV_ORGANIC_SINK || alive == LV_ORGANIC_HOLD)
-    	{
-    		botMove(this, 5, 1);
-    	}*/
     	if (alive == LV_FREE || alive == LV_ORGANIC_HOLD || alive == LV_ORGANIC_SINK)
 		  {
 			botMove(this, 5, 1);
@@ -266,9 +235,6 @@ public class Bot implements IBot
 		return this.world;
 	}
 
-
-
-    //жжжжжжжжжжжжжжжжжжжхжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжж
     // -- получение Х-координаты рядом        ---------
     //  с био по относительному направлению  ----------
     // in - номер бота, направление       --------------
@@ -299,7 +265,6 @@ public class Bot implements IBot
         return xt;
     }
 
-    //жжжжжжжжжжжжжжжжжжжхжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжж
     // -- получение Х-координаты рядом        ---------
     //  с био по абсолютному направлению     ----------
     // in - номер био, направление       --------------
@@ -326,7 +291,6 @@ public class Bot implements IBot
         return xt;
     }
 
-    //жжжжжжжжжжжжхжжжжжхжжжжжжхжхжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжж
     // ------ получение Y-координаты рядом              ---------
     // ---- Y координата по относительному направлению  ----------
     // ---  in - номер бота, направление              ------------
@@ -351,7 +315,6 @@ public class Bot implements IBot
         return yt;
     }
 
-    //жжжжжжжжжжжжхжжжжжхжжжжжжхжхжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжж
     // ------ получение Y-координаты рядом              ---------
     // ---- Y координата по абсолютному направлению     ----------
     // ---  in - номер бота, направление              ------------
@@ -372,10 +335,6 @@ public class Bot implements IBot
         return yt;
     }
 
-    //жжжжжжжжжжжжжжжжжжжхжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжж
-    //===========   окружен ли бот          ==========
-    // ---  in - бот                 ------------
-    //===== out  1-окружен  2-нет           ===
     /**
      * окружен ли бот 
      * @param bot
@@ -394,8 +353,6 @@ public class Bot implements IBot
         return 1;
     }
 
-
-    //жжжжжжжжжжжжжжжжжжжхжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжж
     //==== ищет свободные ячейки вокруг бота ============
     //==== начинает спереди и дальше по      ============
     //==== кругу через низ    ( world )      ============
@@ -421,7 +378,6 @@ public class Bot implements IBot
         return 8;
     }
 
-    //жжжжжжжжжжжжжжжжжжжхжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжж
     // -- получение параметра для команды   --------------
     //  in - bot
     // out - возвращает число из днк, следующее за выполняемой командой
@@ -439,7 +395,6 @@ public class Bot implements IBot
         return bot.mind[paramadr]; // возвращает число, следующее за выполняемой командой
     }
 
-    //жжжжжжжжжжжжжжжжжжжхжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжж
     // -- увеличение адреса команды   --------------
     //  in - bot, насколько прибавить адрес --
     /**
@@ -455,7 +410,6 @@ public class Bot implements IBot
         bot.adr = paramadr;
     }
 
-    //жжжжжжжжжжжжжжжжжжжхжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжж
     //---- косвенное увеличение адреса команды   --------------
     //---- in - номер bot, смещение до команды,  --------------
     //---- которая станет смещением              --------------
@@ -474,8 +428,6 @@ public class Bot implements IBot
         botIncCommandAddress(bot, bias);
     }
 
-
-    //жжжжжжжжжжжжжжжжжжжхжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжж
     //=====  превращение бота в органику    ===========
     //=====  in - номер бота                ===========
     /**
@@ -492,7 +444,6 @@ public class Bot implements IBot
         bot.mnext = null;
     }
 
-    //жжжжжжжжжжжжжжжжжжжхжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжж
     //========   нахожусь ли я в многоклеточной цепочке  =====
     //========   in - номер бота                         =====
     //========   out- 0 - нет, 1 - есть MPREV, 2 - есть MNEXT, 3 есть MPREV и MNEXT
@@ -513,7 +464,6 @@ public class Bot implements IBot
         return a;
     }
 
-    //жжжжжжжжжжжжжжжжжжжхжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжж
     //===== перемещает бота в нужную точку  ==============
     //===== без проверок                    ==============
     //===== in - номер бота и новые координаты ===========
@@ -531,7 +481,6 @@ public class Bot implements IBot
         bot.y = yt;
     }
 
-    //жжжжжжжжжжжжжжжжжжжхжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжж
     //=====   удаление бота        =============
     //=====  in - бот       =============
     /**
@@ -856,9 +805,6 @@ public class Bot implements IBot
         return 5;
     }
 
-
-    //....................................................................
-    // рождение нового бота делением
     /**
      * рождение нового бота делением
      */
@@ -905,7 +851,6 @@ public class Bot implements IBot
         world.matrix[xt][yt] = newbot;    // отмечаем нового бота в массиве matrix
     }
 
-    // ======       рождение новой клетки многоклеточного    ==========================================
     /**
      * рождение новой клетки многоклеточного
      */
@@ -966,11 +911,6 @@ public class Bot implements IBot
         }
     }
 
-
-    //жжжжжжжжжжжжжжжжжжжхжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжж
-    //========   копится ли энергия            =====
-    //========   in - номер бота                =====
-    //========   out- 1 - да, 2 - нет           =====
     /**
      * копится ли энергия 
      * @param bot
@@ -995,10 +935,6 @@ public class Bot implements IBot
         }
     }
 
-    //жжжжжжжжжжжжжжжжжжжхжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжж
-    //========   родственники ли боты?              =====
-    //========   in - номер 1 бота , номер 2 бота   =====
-    //========   out- 0 - нет, 1 - да               =====
     /**
      * родственники ли боты?
      * @param bot0
@@ -1021,9 +957,6 @@ public class Bot implements IBot
         return 1;
     }
 
-    //жжжжжжжжжжжжжжжжжжжхжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжж
-    //=== делаем бота более зеленым на экране         ======
-    //=== in - номер бота, на сколько озеленить       ======
     /**
      *  делаем бота более зеленым на экране
      * @param bot
@@ -1053,9 +986,6 @@ public class Bot implements IBot
         }
     }
 
-    //жжжжжжжжжжжжжжжжжжжхжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжжж
-    //=== делаем бота более синим на экране         ======
-    //=== in - номер бота, на сколько осинить       ======
     /**
      *  делаем бота более синим на экране
      * @param bot
