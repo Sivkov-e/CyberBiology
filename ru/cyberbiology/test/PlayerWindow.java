@@ -233,7 +233,6 @@ public class PlayerWindow extends JFrame implements IWindow
         	    
         	    buf.append("</html>");
 	        	JComponent component = (JComponent)e.getSource();
-	        	//System.out.println(bot);
 	        	paintPanel.setToolTipText(buf.toString());
 	            MouseEvent phantom = new MouseEvent(
 	                    component,

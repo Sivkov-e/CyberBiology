@@ -72,8 +72,7 @@ public class World implements IWorld
 	{
 		public void run()
 		{
-			started = true;// Флаг работы потока, если установить в false поток
-							// заканчивает работу
+			started = true;// Если false, то поток заканчивает работу
 			while (started)
 			{
 
@@ -89,7 +88,6 @@ public class World implements IWorld
 					{
 						if (matrix[x][y] != null)
 						{
-							// if (matrix[x][y].alive == 3)
 							{
 								matrix[x][y].step(); // выполняем шаг бота
 								if (rec)
@@ -108,7 +106,6 @@ public class World implements IWorld
 				{ // отрисовка на экран через каждые ... шагов
 					paint(); // отображаем текущее состояние симуляции на экран
 				}
-				// sleep(); // пауза между ходами, если надо уменьшить скорость
 			}
 			paint();// если запаузили рисуем актуальную картинку
 			started = false;// Закончили работу

@@ -217,10 +217,6 @@ public class RecordManager extends AbstractRecordManager
 	}
 	class Item
 	{
-		//int[] data;
-		//Bot bot;
-		
-		
 		byte bot_adr;
 		int bot_x;
 		int bot_y;
@@ -239,7 +235,7 @@ public class RecordManager extends AbstractRecordManager
 		
 		public Item(Bot bot, int x, int y)
 		{
-			// жестко сохраняем все зхначения, так как к моменту сохранения кадра данные могут изменится
+			// жестко сохраняем все значения, так как к моменту сохранения кадра данные могут изменится
 			bot_adr	= (byte) bot.adr;
 			bot_x	= bot.x;
 			bot_y	= bot.y;
